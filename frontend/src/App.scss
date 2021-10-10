@@ -1,0 +1,187 @@
+$PRIMARY_BG: #232527;
+$LIGHT: #f5f6f7;
+$TEXT_PRIMARY: $LIGHT;
+$CRIMSON: #ff2477;
+$GOLD: #f3d814;
+html,
+body {
+    min-height: 100vh;
+    color: $TEXT_PRIMARY;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.app {
+    min-height: 100vh;
+    background-color: $PRIMARY_BG;
+    font-size: calc(0.5rem + 1vmin);
+}
+
+.movie-section {
+    width: 100%;
+    margin: 1rem 0;
+    .movie-section-header {
+        padding: 0 1rem;
+        line-height: 2.5rem;
+        text-overflow: ellipsis;
+        font-size: calc(1.5rem + 1vmin);
+        color: $TEXT_PRIMARY;
+    }
+    .movie-section-more {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .movie-card-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .movie-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            width: 15rem;
+            height: 20rem;
+            margin: 0.75rem;
+            border: 1px solid $TEXT_PRIMARY;
+            color: $TEXT_PRIMARY;
+            &:hover {
+                .movie-card-poster {
+                    img {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+            .movie-card-poster {
+                flex: 1;
+                width: 100%;
+                overflow: hidden;
+                img {
+                    max-width: 100%;
+                    object-fit: cover;
+                    transition: 0.3s all;
+                    background-color: $LIGHT;
+                }
+                .movie-card-actionbar {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    width: 100%;
+                    padding: 0.15rem 0.25rem;
+                    background-color: transparentize(
+                        $color: $PRIMARY_BG,
+                        $amount: 0.5
+                    );
+                    .fav-btn {
+                        font-size: 1.25rem;
+                        cursor: pointer;
+                        text-shadow: 0 0 11px $GOLD;
+                    }
+                    p {
+                        margin: 0;
+                        flex: 1;
+                        font-size: 0.75rem;
+                        color: darken($TEXT_PRIMARY, 10%);
+                    }
+                }
+            }
+            .movie-card-title {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                background-color: transparentize(
+                    $color: $PRIMARY_BG,
+                    $amount: 0.2
+                );
+                p {
+                    margin: 0;
+                    font-size: 0.85rem;
+                    padding: 0.5rem;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 100%;
+                    width: 100%;
+                    text-shadow: 1px 1px 1px $PRIMARY_BG;
+                }
+                .list-actions {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    border-top: 1px solid $LIGHT;
+                    div {
+                        cursor: pointer;
+                        flex: 1;
+                        font-size: 0.8rem;
+                        text-align: center;
+                        background-color: $PRIMARY_BG;
+                        &:nth-child(1) {
+                            border-right: 1px solid $LIGHT;
+                        }
+
+                        &.gold {
+                            background-color: transparentize($GOLD, 0.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.error {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    color: $CRIMSON;
+}
+.btn {
+    background-color: $CRIMSON;
+    border: none;
+    padding: 1rem 3rem;
+    color: $TEXT_PRIMARY;
+    border-radius: 2rem;
+}
+
+.search {
+    width: 100%;
+    padding: 0 20%;
+    .input {
+        width: 100%;
+        input {
+            color: $TEXT_PRIMARY;
+            text-align: center;
+            border-radius: 2rem;
+            background-color: lighten($PRIMARY_BG, 10%);
+        }
+    }
+}
+
+.video-container {
+    width: 100%;
+    height: 30rem;
+    border: 1px solid $LIGHT;
+}
+
+.ui.modal {
+    background-color: $PRIMARY_BG !important;
+
+    div {
+        background-color: inherit !important;
+        color: inherit !important;
+    }
+}
