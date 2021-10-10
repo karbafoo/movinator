@@ -51,7 +51,7 @@ const MakeList = (identifier, {name}) => {
 };
 const getUserLists = (identifier) => {
     return new Promise((resolve, reject) => {
-        List.find({user: identifier._id, primary: false})
+        List.find({user: identifier._id})
             .then((listDocs) => {
                 Promise.all(
                     listDocs.map((listDoc) => __getListItems__(listDoc._id))
@@ -250,6 +250,7 @@ const _parseList = (listDoc, listItems = []) => {
     return {
         list: listDoc._id,
         name: listDoc.name,
+        icon: listDoc.icon || 'folder',
         items: listItems.map((item) => ({
             imdb_id: item.imdb_id,
             title: item.title,
