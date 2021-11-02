@@ -17,7 +17,9 @@ import {Log} from '../util/logger';
 const AddToListModal = () => {
     const {state, dispatch} = React.useContext(GitcoinContext);
     const [trigger, setTrigger] = React.useState<boolean>(false);
-    const [userLists, userListsLoading] = useGetUsersLists(trigger);
+    const [userLists, userListsLoading] = useGetUsersLists(
+        trigger || state.newListModalVisibility
+    );
 
     const setVisChange = (vis: boolean = false) => {
         dispatch({type: ACTIONS.SET_ADD_TO_LIST_MODAL_VISIBLITY, payload: vis});

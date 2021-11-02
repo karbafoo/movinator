@@ -6,7 +6,7 @@ export const useGetUsersLists = (trigger: boolean): [List[], boolean, any] => {
     const [loading, setLoading] = useState<boolean>(false);
     const [err, setErr] = useState<any>(null);
     const [movies, setMovies] = useState<List[]>([]);
-
+    console.log('trigger', trigger);
     useMemo(() => {
         setErr(null);
         setLoading(true);

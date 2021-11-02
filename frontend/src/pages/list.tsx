@@ -11,6 +11,7 @@ const ListDetailsPage = () => {
     const {name} = useParams<any>();
     const [trigger, setTrigger] = React.useState<boolean>(false);
     const [list, loading, err] = useGetList(name, trigger);
+
     const onRemoveFromList = (movie: ListItem) => {
         if (list) {
             RemoveFromList(list.name, movie.imdb_id)

@@ -113,10 +113,14 @@ const MovieSection = ({
     const {dispatch} = React.useContext(GitcoinContext);
     const [showMore, setShowMore] = React.useState(false);
     const isFaved = (id: string) =>
-        favs && favs.items.findIndex((i) => i.imdb_id.toString() === id) > -1;
+        favs &&
+        favs.items.findIndex((i) => i.imdb_id.toString() === id.toString()) >
+            -1;
     const isInWatchLater = (id: string) =>
         watchLaters &&
-        watchLaters.items.findIndex((i) => i.imdb_id.toString() === id) > -1;
+        watchLaters.items.findIndex(
+            (i) => i.imdb_id.toString() === id.toString()
+        ) > -1;
 
     const onToggleFavList = (movie: MovieDB) => {
         if (isFaved(movie.id)) {
